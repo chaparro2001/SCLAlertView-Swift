@@ -457,13 +457,11 @@ open class SCLAlertView: UIViewController {
             y += appearance.kTextViewdHeight
         }
         // Buttons
-        /*let numberOfButton = CGFloat(buttons.count)
-         let buttonsSpace = numberOfButton >= 1 ? CGFloat(12) * (numberOfButton - 12) : 0
-         let widthEachButton = (appearance.kWindowWidth - 24 - buttonsSpace) / numberOfButton
-         var buttonX = CGFloat(12)*/
+        
         let numberOfButton = CGFloat(buttons.count)
-        let ancho = appearance.kWindowWidth - 24
-        let anchoBoton = (ancho - ((numberOfButton - 1) * 10)) / numberOfButton
+        let widthAreaButtons = appearance.kWindowWidth - 24
+        let spaceButton = CGFloat(10)
+        let buttonWidth = (widthAreaButtons - ((numberOfButton - 1) * spaceButton)) / numberOfButton
         var buttonX = CGFloat(10)
         
         switch appearance.buttonsLayout {
@@ -474,17 +472,10 @@ open class SCLAlertView: UIViewController {
                 y += appearance.kButtonHeight
             }
         case .horizontal:
-            /*for btn in buttons {
-             btn.frame = CGRect(x:buttonX, y:y, width: widthEachButton, height:35)
-             btn.layer.cornerRadius = appearance.buttonCornerRadius
-             buttonX += widthEachButton
-             buttonX += buttonsSpace
-             }*/
-            
             for btn in buttons {
-                btn.frame = CGRect(x:buttonX, y:y, width: anchoBoton, height:35)
+                btn.frame = CGRect(x:buttonX, y:y, width: buttonWidth, height:35)
                 btn.layer.cornerRadius = appearance.buttonCornerRadius
-                buttonX += anchoBoton
+                buttonX += buttonWidth
                 buttonX += 10
             }
         }
